@@ -1,6 +1,6 @@
-# Network Scanner Tool
+# Network Scanner Tool Suite
 
-A Python-based network scanning tool for authorized internal security testing.
+A comprehensive Python-based network scanning toolkit for authorized internal security testing.
 
 ## ⚠️ Security Disclaimer
 
@@ -11,8 +11,20 @@ A Python-based network scanning tool for authorized internal security testing.
 - The tool includes rate limiting to avoid network overload
 - No exploit functionality is included
 
+## 🚀 Three Tools in One
+
+### 1. Basic Scanner (`network_scanner.py`)
+Fast and simple network scanning with essential features.
+
+### 2. Advanced Scanner (`advanced_scanner.py`)
+Enhanced scanning with OS detection, vulnerability checks, and HTML reports.
+
+### 3. GUI Scanner (`scanner_gui.py`)
+User-friendly graphical interface for easy scanning.
+
 ## Features
 
+### Basic Scanner
 - ✅ Detect active hosts (ping sweep)
 - ✅ Scan for open TCP ports
 - ✅ Identify common services on open ports
@@ -22,6 +34,23 @@ A Python-based network scanning tool for authorized internal security testing.
 - ✅ Export results to JSON or CSV
 - ✅ Clean terminal output with progress indicators
 - ✅ Support for single IPs and CIDR ranges
+
+### Advanced Scanner (Additional Features)
+- ✅ OS Detection (TTL-based fingerprinting)
+- ✅ Service version detection
+- ✅ SSL/TLS detection and cipher identification
+- ✅ Vulnerability assessment
+- ✅ HTML report generation with styling
+- ✅ Extended port database (40+ services)
+- ✅ Fast mode for quick scans
+- ✅ Verbose debug logging
+
+### GUI Scanner
+- ✅ Easy-to-use graphical interface
+- ✅ Real-time scan progress
+- ✅ Interactive configuration
+- ✅ One-click export
+- ✅ No command-line knowledge required
 
 ## Requirements
 
@@ -40,13 +69,14 @@ No additional packages need to be installed - the tool uses only Python's standa
 
 ## Usage
 
-### Basic Syntax
+### 1. Basic Scanner
 
+**Syntax:**
 ```bash
 python network_scanner.py -t <target> [options]
 ```
 
-### Examples
+**Examples:**
 
 **Scan a single host (default ports 1-1000):**
 ```bash
@@ -83,7 +113,58 @@ python network_scanner.py -t 192.168.1.1 -p 1-1000 -o results.csv
 python network_scanner.py -t 192.168.1.1 --timeout 2 --threads 50
 ```
 
+### 2. Advanced Scanner
+
+**Syntax:**
+```bash
+python advanced_scanner.py -t <target> [options]
+```
+
+**Examples:**
+
+**Scan with OS detection:**
+```bash
+python advanced_scanner.py -t 192.168.1.1
+```
+
+**Scan with vulnerability check:**
+```bash
+python advanced_scanner.py -t 192.168.1.0/24 -v
+```
+
+**Generate HTML report:**
+```bash
+python advanced_scanner.py -t 192.168.1.1 -p 1-1000 -o report.html
+```
+
+**Fast scan mode:**
+```bash
+python advanced_scanner.py -t 10.0.0.0/24 --fast -v -o results.json
+```
+
+**Verbose debugging:**
+```bash
+python advanced_scanner.py -t 192.168.1.1 --verbose
+```
+
+### 3. GUI Scanner
+
+**Launch the GUI:**
+```bash
+python scanner_gui.py
+```
+
+Then:
+1. Enter target IP or CIDR range
+2. Set port range
+3. Configure options
+4. Click "Start Scan"
+5. View results in real-time
+6. Export to JSON if needed
+
 ### Command-Line Arguments
+
+#### Basic Scanner
 
 | Argument | Description | Default |
 |----------|-------------|---------|
@@ -93,6 +174,15 @@ python network_scanner.py -t 192.168.1.1 --timeout 2 --threads 50
 | `-o, --output` | Export to file (.json or .csv) | - |
 | `--timeout` | Socket timeout in seconds | 1.0 |
 | `--threads` | Maximum number of threads | 100 |
+
+#### Advanced Scanner (Additional Options)
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `-v, --vulns` | Enable vulnerability checking | False |
+| `--fast` | Fast mode (no rate limiting) | False |
+| `--verbose` | Enable verbose debug output | False |
+| `-o, --output` | Export to file (.json or .html) | - |
 
 ### Help
 
